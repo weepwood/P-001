@@ -46,10 +46,15 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+      - name: Prepare minimal static site
+        run: |
+          mkdir -p _site/src
+          cp index.html favicon.svg _site/
+          cp src/app.js src/styles.css _site/src/
       - name: Upload static site
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: .
+          path: _site
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
