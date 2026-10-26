@@ -48,3 +48,17 @@ test('usable narrow layouts and reduced-motion preferences are defined', () => {
   assert.match(css, /@media \(max-width:500px\)/);
   assert.match(css, /prefers-reduced-motion:reduce/);
 });
+
+test('editor uses no wrapping to keep textarea and highlighted code aligned', () => {
+  assert.match(html, /id="codeInput"[^>]*wrap="off"/);
+  assert.match(css, /\.code-highlight,#codeInput\{[^}]*white-space:pre;/);
+});
+
+test('Pages packages only actual public assets', () => {
+  const workflow = readFileSync(new URL('../.github/workflows/pages.yml', import.meta.url), 'utf8');
+  assert.match(workflow, /mkdir -p _site\/src/);
+  assert.match(workflow, /cp index\.html favicon\.svg _site\//);
+  assert.match(workflow, /cp src\/app\.js src\/styles\.css _site\/src\//);
+  assert.match(workflow, /actions\/upload-pages-artifact@v4/);
+  assert.match(workflow, /path: _site/);
+});
