@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#191A1B" />
+  <meta name="description" content="Faithful interactive reproduction of the Visual Studio Code Dark 2026 and Light 2026 workbench." />
+  <title>VS Code 2026 — Theme Lab</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body data-theme="dark" data-density="comfortable">
+  <svg class="icon-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-files" viewBox="0 0 24 24"><rect x="8" y="3" width="12" height="15" rx="1.5"/><path d="M5 7H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-1"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.7" cy="10.7" r="6.7"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-git" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="7" r="2"/><path d="M6 7v10M18 9v3a7 7 0 0 1-7 7H8"/></symbol>
+    <symbol id="i-debug" viewBox="0 0 24 24"><path d="m7 4 12 8-12 8V4ZM4 4h1"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17h7M17.5 13.5v7"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M10 2h4l.7 2.4 1.7.7 2.2-1.2 2.8 2.8-1.2 2.2.7 1.7L23 11v3l-2.4.7-.7 1.7 1.2 2.2-2.8 2.8-2.2-1.2-1.7.7L14 23h-4l-.7-2.4-1.7-.7-2.2 1.2-2.8-2.8 1.2-2.2-.7-1.7L1 14v-3l2.4-.7.7-1.7-1.2-2.2 2.8-2.8 2.2 1.2 1.7-.7L10 2Z"/><circle cx="12" cy="12.5" r="3.3"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 21c0-4.7 3.2-7 7.5-7s7.5 2.3 7.5 7"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.7 15.7A9 9 0 0 1 8.3 3.3 9 9 0 1 0 20.7 15.7Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></symbol>
+    <symbol id="i-panel" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M2 15h20"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20.5 13a7.5 7.5 0 0 1-7.5 7.5 8 8 0 0 1-3.6-.8L4 21l1.4-4.4A7.5 7.5 0 1 1 20.5 13Z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2.5h8l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-17a1 1 0 0 1 1-1Z"/><path d="M14 2.5v5h5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="2.5" y="3" width="19" height="18" rx="2"/><path d="m6.5 9 4 3.5-4 3.5M13 16.5h5"/></symbol>
+    <symbol id="i-split" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M12 3v18"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="m14.5 5-7 7 7 7"/></symbol>
+    <symbol id="i-forward" viewBox="0 0 24 24"><path d="m9.5 5 7 7-7 7"/></symbol>
+    <symbol id="i-history" viewBox="0 0 24 24"><path d="M3 10a9 9 0 1 1 2 7M3 4v6h6M12 7v6l4 2"/></symbol>
+    <symbol id="i-command" viewBox="0 0 24 24"><path d="M9 7V5a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3v14a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5.5 5.5L20 6"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0 0 20h2.5a2 2 0 0 0 1.2-3.6 1.8 1.8 0 0 1 1.1-3.2H19A3 3 0 0 0 22 12 10 10 0 0 0 12 2Z"/><circle cx="7.5" cy="12" r=".8"/><circle cx="9" cy="7.5" r=".8"/><circle cx="14" cy="6.5" r=".8"/><circle cx="18" cy="10" r=".8"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="1"/><path d="M16 5V3H5a2 2 0 0 0-2 2v12h2"/></symbol>
+    <symbol id="i-layout" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 3v18M8 9h14"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-4 18"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 2 1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2ZM19 17l.7 2.3L22 20l-2.3.7L19 23l-.7-2.3L16 20l2.3-.7L19 17Z"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 0-16-5L2 10m0-7v7h7M3 12a9 9 0 0 0 16 5l3-3m0 7v-7h-7"/></symbol>
+    <symbol id="i-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></symbol>
+    <symbol id="i-max" viewBox="0 0 24 24"><path d="M9 3H3v6M15 3h6v6M3 15v6h6M21 15v6h-6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M2.5 6a2 2 0 0 1 2-2H10l2.2 2.5h7.3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-15a2 2 0 0 1-2-2V6Z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3 6.4 7 .9-5.2 5 1.3 7L12 18l-6.1 3.3 1.3-7-5.2-5 7-.9L12 2Z"/></symbol>
+  </svg>
+  <div class="workbench" id="workbench">
+    <header class="titlebar">
+      <div class="window-control"><span></span><span></span><span></span></div>
+      <div class="navigation"><button class="icon-btn" id="navBack" title="Go Back"><svg><use href="#i-back"/></svg></button><button class="icon-btn" id="navForward" title="Go Forward"><svg><use href="#i-forward"/></svg></button></div>
+      <button class="command-center" id="openQuick"><svg><use href="#i-search"/></svg><span>P-001</span><span class="command-divider">·</span><span class="command-dim">Visual Studio Code</span><span class="command-shortcut">⌘ P</span></button>
+      <div class="title-actions">
+        <span class="preview-label">2026 WORKBENCH</span>
+        <button class="theme-switch" id="themeToggle" title="Switch color theme"><svg class="theme-dark"><use href="#i-moon"/></svg><svg class="theme-light"><use href="#i-sun"/></svg><span id="themeLabel">Dark 2026</span><svg class="theme-chevron"><use href="#i-chevron"/></svg></button>
+        <span class="title-action-divider"></span>
+        <button class="icon-btn" id="togglePanelTop" title="Toggle Panel (⌘ J)"><svg><use href="#i-panel"/></svg></button>
+        <button class="icon-btn" id="toggleChatTop" title="Toggle Secondary Side Bar"><svg><use href="#i-split"/></svg></button>
+        <button class="icon-btn" id="openSettingsTop" title="Customize Layout"><svg><use href="#i-layout"/></svg></button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <nav class="activity-bar" aria-label="Activity Bar">
+        <div class="activity-top">
+          <button class="activity-btn selected" data-view="explorer" title="Explorer (⌘ ⇧ E)"><svg><use href="#i-files"/></svg></button>
+          <button class="activity-btn" data-view="search" title="Search (⌘ ⇧ F)"><svg><use href="#i-search"/></svg></button>
+          <button class="activity-btn" data-view="source" title="Source Control (⌃ ⇧ G)"><svg><use href="#i-git"/></svg><i class="activity-dot"></i></button>
+          <button class="activity-btn" data-view="run" title="Run and Debug"><svg><use href="#i-debug"/></svg></button>
+          <button class="activity-btn" data-view="extensions" title="Extensions (⌘ ⇧ X)"><svg><use href="#i-grid"/></svg></button>
+        </div>
+        <div class="activity-bottom">
+          <button class="activity-btn accent-icon" id="activityCopilot" title="Toggle Chat"><svg><use href="#i-sparkles"/></svg></button>
+          <button class="activity-btn" id="activityAccount" title="Accounts"><svg><use href="#i-user"/></svg></button>
+          <button class="activity-btn" id="activitySettings" title="Manage"><svg><use href="#i-settings"/></svg></button>
+        </div>
+      </nav>
+
+      <aside class="primary-sidebar" id="primarySidebar">
+        <div class="side-header"><span id="sideTitle">EXPLORER</span><div class="side-buttons"><button class="small-icon-btn" id="sideNew" title="New file"><svg><use href="#i-plus"/></svg></button><button class="small-icon-btn" id="sideMore" title="More Actions"><svg><use href="#i-more"/></svg></button></div></div>
+        <div id="sideContent" class="sidebar-body"></div>
+        <div class="sidebar-footer"><svg><use href="#i-git"/></svg><span>main</span><span class="subtle">·</span><span>theme-lab</span></div>
+      </aside>
+
+      <section class="main-editor" id="mainEditor">
+        <div class="tab-bar"><div class="tabs" id="tabs"></div><div class="tab-tools"><button class="small-icon-btn" id="splitEditor" title="Split Editor"><svg><use href="#i-split"/></svg></button><button class="small-icon-btn" id="editorMore" title="Editor Actions"><svg><use href="#i-more"/></svg></button></div></div>
+        <div class="breadcrumbs" id="breadcrumbs"></div>
+        <div class="editor-stack">
+          <div class="code-editor" id="codeEditor">
+            <div class="editor-lines" id="lineNumbers"></div>
+            <div class="editor-code-wrapper" id="editorCodeWrapper"><pre class="code-highlight" id="highlightedCode" aria-hidden="true"></pre><textarea id="codeInput" aria-label="Code editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea></div>
+            <div class="minimap" id="minimap" aria-hidden="true"></div>
+          </div>
+          <div class="terminal-panel" id="terminalPanel">
+            <div class="terminal-header"><div class="terminal-tabs"><button class="terminal-tab active" data-terminal-tab="terminal">TERMINAL</button><button class="terminal-tab" data-terminal-tab="problems">PROBLEMS <span class="subtle">0</span></button><button class="terminal-tab" data-terminal-tab="output">OUTPUT</button><button class="terminal-tab" data-terminal-tab="debug">DEBUG CONSOLE</button></div><div class="terminal-tools"><span class="terminal-session"><span class="terminal-led"></span> zsh</span><button class="small-icon-btn" id="newTerminal" title="New Terminal"><svg><use href="#i-plus"/></svg></button><button class="small-icon-btn" id="closeTerminal" title="Close Panel"><svg><use href="#i-x"/></svg></button></div></div>
+            <div class="terminal-content" id="terminalContent"><div id="terminalHistory"></div><div class="terminal-prompt"><span class="prompt-dir">~/P-001</span><span class="prompt-arrow">❯</span><input id="terminalInput" aria-label="Terminal command" autocomplete="off" spellcheck="false" placeholder="Type a command and press Enter" /></div></div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="secondary-sidebar" id="secondarySidebar">
+        <div class="chat-header"><span>CHAT</span><div class="chat-actions"><button class="small-icon-btn" id="clearChat" title="New Chat"><svg><use href="#i-plus"/></svg></button><button class="small-icon-btn" id="closeChat" title="Close Chat"><svg><use href="#i-x"/></svg></button></div></div>
+        <div class="chat-body" id="chatBody">
+          <div class="chat-intro"><div class="chat-mark"><svg><use href="#i-sparkles"/></svg></div><h2>Build with Copilot</h2><p>Explore your project with AI. Ask questions, review changes, or plan your next feature.</p></div>
+          <div class="chat-suggestions" id="chatSuggestions"><button data-prompt="Explain the new 2026 color themes"><svg><use href="#i-palette"/></svg><span>Explore the 2026 color themes</span><svg class="suggest-arrow"><use href="#i-chevron"/></svg></button><button data-prompt="Show me how the theme tokens work"><svg><use href="#i-code"/></svg><span>Understand theme tokens</span><svg class="suggest-arrow"><use href="#i-chevron"/></svg></button><button data-prompt="How can I customize this workspace?"><svg><use href="#i-layout"/></svg><span>Customize this workspace</span><svg class="suggest-arrow"><use href="#i-chevron"/></svg></button></div>
+          <div class="chat-messages" id="chatMessages" aria-live="polite"></div>
+        </div>
+        <form class="chat-composer" id="chatForm"><textarea id="chatInput" rows="2" placeholder="Ask Copilot or type / for commands" aria-label="Chat prompt"></textarea><div class="composer-bottom"><div class="composer-context"><span class="agent-pill"><svg><use href="#i-sparkles"/></svg> Agent <svg class="mini-chevron"><use href="#i-chevron"/></svg></span><span>GPT-5.4 <svg class="mini-chevron"><use href="#i-chevron"/></svg></span></div><button class="send-btn" type="submit" title="Send message"><svg><use href="#i-forward"/></svg></button></div></form>
+        <div class="chat-disclaimer">UI demonstration · no AI service connected</div>
+      </aside>
+    </main>
+    <footer class="statusbar">
+      <div class="status-left"><button id="statusRemote" title="Open Remote Window"><svg><use href="#i-code"/></svg></button><button id="statusBranch" title="Source Control"><svg><use href="#i-git"/></svg> main*</button><button id="statusSync" title="Sync Changes"><svg><use href="#i-refresh"/></svg></button><span class="status-separator"></span><button id="statusProblems" title="Show Problems"><svg><use href="#i-circle"/></svg> 0 <svg><use href="#i-info"/></svg> 0</button></div>
+      <div class="status-right"><span id="cursorPosition">Ln 1, Col 1</span><span>Spaces: 2</span><span>UTF-8</span><span id="languageStatus">TypeScript React</span><button id="statusTheme" title="Change Color Theme"><svg><use href="#i-palette"/></svg></button><button id="statusBell" title="Notifications"><svg><use href="#i-bell"/></svg></button></div>
+    </footer>
+  </div>
+  <div class="overlay hidden" id="paletteOverlay" role="presentation"><div class="quick-pick" role="dialog" aria-modal="true" aria-label="Quick Open"><div class="quick-input-wrap"><svg><use href="#i-search"/></svg><input id="paletteInput" type="text" autocomplete="off" aria-label="Search files and commands" placeholder="Search files by name (append : to go to line)" /><span class="quick-key">esc</span></div><div class="quick-results" id="paletteResults"></div><div class="quick-footer"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> to select</span><span><kbd>esc</kbd> to dismiss</span></div></div></div>
+  <div class="overlay hidden" id="settingsOverlay" role="presentation"><div class="settings-modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><div class="modal-header"><div><div class="modal-eyebrow">PERSONALIZE</div><h2 id="settingsTitle">Customize appearance</h2><p>Fine tune your VS Code-inspired workbench.</p></div><button class="icon-btn" id="closeSettings" title="Close Settings"><svg><use href="#i-x"/></svg></button></div><div class="settings-section"><label>Color theme</label><div class="theme-options"><button class="theme-option" data-theme-option="light"><span class="theme-preview light-preview"><i></i><b></b></span><strong>Light 2026</strong><small>Bright, focused</small><svg class="option-check"><use href="#i-check"/></svg></button><button class="theme-option" data-theme-option="dark"><span class="theme-preview dark-preview"><i></i><b></b></span><strong>Dark 2026</strong><small>Calm, refined</small><svg class="option-check"><use href="#i-check"/></svg></button></div></div><div class="settings-section"><label for="fontSizeRange">Editor font size <span id="fontSizeValue">13 px</span></label><input type="range" id="fontSizeRange" min="11" max="18" value="13" /><div class="setting-row"><div><strong>Compact layout</strong><small>Reduce spacing throughout the workbench</small></div><button class="toggle" id="densityToggle" role="switch" aria-checked="false" aria-label="Compact layout"><span></span></button></div><div class="setting-row"><div><strong>Editor minimap</strong><small>Show a compact overview of your file</small></div><button class="toggle checked" id="minimapToggle" role="switch" aria-checked="true" aria-label="Editor minimap"><span></span></button></div></div><div class="modal-footer"><span>Inspired by microsoft/vscode · MIT</span><button id="doneSettings">Done</button></div></div></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="src/app.js" defer></script>
+</body>
+</html>
