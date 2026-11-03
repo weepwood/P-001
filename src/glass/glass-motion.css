@@ -1,0 +1,8 @@
+/* Animate only geometry, never long-running opacity or blur changes. */
+@keyframes glass-scale-enter { from { transform: scale(.97); } to { transform: scale(1); } }
+@keyframes glass-scale-exit { from { transform: scale(1); } to { transform: scale(.985); } }
+.glass-enter { animation: glass-scale-enter 200ms var(--glass-ease) both; transform-origin: top center; }
+.glass-popover-panel.glass-enter { transform-origin: top right; }
+@media (prefers-reduced-motion: reduce) {
+  .glass-enter, .glass-leave, .glass-popover-panel { animation: none !important; transition: none !important; }
+}

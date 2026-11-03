@@ -498,11 +498,12 @@
     {name:'Terminal: Clear',detail:'Terminal',run:() => { $('#terminalHistory').innerHTML = ''; togglePanel(true); }}
   ];
   let paletteSearch = '';
+  const glassPalette = new window.FrostedGlassUI.GlassCommandPalette($('#paletteOverlay'), { input: $('#paletteInput') });
 
-  const closePalette = () => { $('#paletteOverlay').classList.add('hidden'); };
+  const closePalette = () => { glassPalette.hide(); };
   const openPalette = (commandMode = false) => {
-    $('#settingsOverlay').classList.add('hidden');
-    $('#paletteOverlay').classList.remove('hidden');
+    closeSettings();
+    glassPalette.show();
     $('#paletteInput').value = commandMode ? '>' : '';
     paletteSearch = $('#paletteInput').value;
     state.paletteIndex = 0;
@@ -531,12 +532,20 @@
     item.run();
   };
 
+  let settingsPreviousFocus = null;
+  const closeSettings = () => {
+    if ($('#settingsOverlay').classList.contains('hidden')) return;
+    $('#settingsOverlay').classList.add('hidden');
+    if (settingsPreviousFocus?.isConnected) settingsPreviousFocus.focus();
+  };
   const openSettings = () => {
     closePalette();
+    settingsPreviousFocus = document.activeElement;
     $('#settingsOverlay').classList.remove('hidden');
     $('#fontSizeRange').value = state.fontSize;
     $('#fontSizeValue').textContent = state.fontSize + ' px';
     $$('.theme-option').forEach((button) => button.classList.toggle('active', button.dataset.themeOption === state.theme));
+    $('#closeSettings').focus();
   };
   const toggleDensity = () => {
     state.density = state.density === 'compact' ? 'comfortable' : 'compact';
@@ -735,9 +744,16 @@
   });
   $('#paletteResults').addEventListener('click',(event) => {const result=event.target.closest('[data-result]');if(result) choosePalette(Number(result.dataset.result));});
   $('#paletteOverlay').addEventListener('click',(event) => {if(event.target.id==='paletteOverlay')closePalette();});
-  $('#settingsOverlay').addEventListener('click',(event) => {if(event.target.id==='settingsOverlay')$('#settingsOverlay').classList.add('hidden');});
-  $('#closeSettings').addEventListener('click',() => $('#settingsOverlay').classList.add('hidden'));
-  $('#doneSettings').addEventListener('click',() => $('#settingsOverlay').classList.add('hidden'));
+  $('#settingsOverlay').addEventListener('click',(event) => {if(event.target.id==='settingsOverlay')closeSettings();});
+  $('#closeSettings').addEventListener('click', closeSettings);
+  $('#doneSettings').addEventListener('click', closeSettings);
+  $('#settingsOverlay').addEventListener('keydown', (event) => {
+    if (event.key !== 'Tab') return;
+    const items = Array.from($('#settingsOverlay').querySelectorAll('button:not([disabled]),input:not([disabled])')).filter(el => el.getClientRects().length);
+    if (!items.length) return;
+    if (event.shiftKey && document.activeElement === items[0]) {event.preventDefault();items.at(-1).focus();}
+    else if (!event.shiftKey && document.activeElement === items.at(-1)) {event.preventDefault();items[0].focus();}
+  });
   $$('.theme-option').forEach((button) => button.addEventListener('click',() => setTheme(button.dataset.themeOption)));
   $('#fontSizeRange').addEventListener('input',(event) => {
     state.fontSize = Number(event.target.value);
@@ -760,7 +776,7 @@
     const key = event.key.toLowerCase();
     if (event.key === 'Escape') {
       closePalette();
-      $('#settingsOverlay').classList.add('hidden');
+      closeSettings();
       return;
     }
     if (modifier && key === 'p') {event.preventDefault();openPalette(event.shiftKey);return;}

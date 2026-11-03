@@ -1,0 +1,39 @@
+/* A surface picks the appropriate official-component color; no glow/dispersion. */
+.glass-surface[data-glass-variant="command"] { --glass-background: var(--glass-command); --glass-radius: 9px; }
+.glass-surface[data-glass-variant="menu"] { --glass-background: var(--glass-menu); --glass-radius: 8px; }
+.glass-surface[data-glass-variant="popover"] { --glass-background: var(--glass-popover); --glass-radius: 10px; }
+.glass-surface[data-glass-variant="dialog"] { --glass-background: var(--glass-dialog); --glass-radius: 12px; }
+.glass-surface[data-glass-variant="tooltip"] { --glass-background: var(--glass-tooltip); --glass-radius: 8px; }
+.glass-surface[data-glass-variant="notification"] { --glass-background: var(--glass-notification); --glass-radius: 8px; }
+.glass-surface :focus-visible { outline: 2px solid var(--glass-focus); outline-offset: -2px; }
+body[data-glass="enabled"] .overlay { background: #00000038; }
+body[data-theme="light"][data-glass="enabled"] .overlay { background: #26334020; }
+.settings-modal.glass-surface { max-height: min(84dvh, 820px); overflow-y: auto; overscroll-behavior: contain; }
+.quick-pick.glass-surface, .settings-modal.glass-surface { color: var(--glass-text); border-color: var(--glass-border); box-shadow: var(--glass-shadow); }
+.toast.glass-surface { color: var(--glass-text); border-color: var(--glass-border); }
+body[data-glass="enabled"] .toast.shown { animation: glass-scale-enter 180ms var(--glass-ease) both; }
+.glass-demo-trigger { flex: 0 0 auto; }
+.glass-popover-panel {
+  position: fixed;
+  z-index: 15;
+  width: min(265px, calc(100vw - 24px));
+  padding: 6px;
+  font-size: 12px;
+}
+.glass-popover-panel[hidden] { display: none !important; }
+.glass-popover-panel .glass-menu-title { color: var(--glass-muted); font-size: 10px; padding: 9px 10px 7px; letter-spacing: .05em; }
+.glass-popover-panel button[role="menuitem"] { width: 100%; text-align: left; display: flex; gap: 10px; align-items: center; border: 0; border-radius: 5px; background: transparent; padding: 10px; font-size: 12px; }
+.glass-popover-panel button[role="menuitem"]:hover, .glass-popover-panel button[role="menuitem"]:focus-visible { background: var(--glass-hover); }
+.glass-popover-panel button svg { width: 15px; height: 15px; }
+.glass-settings-title { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-bottom: 11px; }
+.glass-settings-title strong { font-size: 12px; font-weight: 600; }
+.glass-settings-title small, .glass-capability { display: block; margin-top: 5px; font-size: 11px; color: var(--glass-muted); line-height: 1.45; }
+.glass-control { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 11px; margin: 10px 0 3px; }
+.glass-control output { font-variant-numeric: tabular-nums; color: var(--glass-muted); }
+.glass-settings input[type="range"] { width: 100%; display: block; accent-color: var(--accent); margin: 4px 0 10px; }
+.glass-settings .glass-preview { margin-top: 14px; padding: 10px; min-height: 96px; background: repeating-linear-gradient(135deg, transparent, transparent 10px, var(--glass-hover) 10px, var(--glass-hover) 20px); border: 1px solid var(--border); border-radius: 9px; display: grid; place-items: center; }
+.glass-settings .glass-preview-card { width: min(290px, 100%); padding: 12px 14px; font-size: 11px; line-height: 1.6; }
+.glass-settings .glass-preview-card strong { display: block; margin-bottom: 3px; }
+.glass-settings .glass-preview-card span { color: var(--glass-muted); }
+.glass-capability { min-height: 18px; margin: 9px 0 13px; }
+@media (max-width: 500px) { .glass-demo-trigger { display: none; } }
