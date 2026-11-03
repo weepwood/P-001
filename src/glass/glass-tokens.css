@@ -1,5 +1,5 @@
 /* VS Code 2026-inspired material tokens. Original values from official 2026 themes.
-   Project demo starts at 80%; official VS Code currently uses a 92% default. */
+   Official configured default is 80%; its CSS fallback token is 92%. */
 :root {
   --glass-blur: 12px;
   --glass-opacity: 80%;
