@@ -544,7 +544,7 @@
     $('#settingsOverlay').classList.remove('hidden');
     $('#fontSizeRange').value = state.fontSize;
     $('#fontSizeValue').textContent = state.fontSize + ' px';
-    $('.theme-option').forEach((button) => button.classList.toggle('active', button.dataset.themeOption === state.theme));
+    $$('.theme-option').forEach((button) => button.classList.toggle('active', button.dataset.themeOption === state.theme));
     $('#closeSettings').focus();
   };
   const toggleDensity = () => {
