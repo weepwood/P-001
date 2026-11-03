@@ -60,8 +60,11 @@
     this.onPanelClick = (event) => {
       const action = event.target.closest('[data-glass-action]');
       if (!action || !panel.contains(action)) return;
+      const hadFocus = panel.contains(document.activeElement);
+      this.hide(false);
       if (typeof this.onAction === 'function') this.onAction(action.dataset.glassAction);
-      this.hide(true);
+      // Do not steal focus from a dialog opened by the menu action.
+      if (hadFocus && panel.contains(document.activeElement)) this.trigger.focus();
     };
     this.onResize = () => { if (!panel.hidden) this.position(); };
     trigger.addEventListener('click', this.onTrigger);
