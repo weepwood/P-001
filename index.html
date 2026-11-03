@@ -8,6 +8,10 @@
   <title>VS Code 2026 — Theme Lab</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="src/styles.css" />
+  <link rel="stylesheet" href="src/glass/glass-tokens.css" />
+  <link rel="stylesheet" href="src/glass/glass.css" />
+  <link rel="stylesheet" href="src/glass/glass-motion.css" />
+  <link rel="stylesheet" href="src/glass/glass-presets.css" />
 </head>
 <body data-theme="dark" data-density="comfortable">
   <svg class="icon-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -59,6 +63,7 @@
         <span class="title-action-divider"></span>
         <button class="icon-btn" id="togglePanelTop" title="Toggle Panel (⌘ J)"><svg><use href="#i-panel"/></svg></button>
         <button class="icon-btn" id="toggleChatTop" title="Toggle Secondary Side Bar"><svg><use href="#i-split"/></svg></button>
+        <button class="icon-btn glass-demo-trigger" id="glassDemoTrigger" aria-label="Frosted glass demo menu" aria-controls="glassDemoMenu" aria-expanded="false" title="Frosted Glass UI"><svg><use href="#i-palette"/></svg></button>
         <button class="icon-btn" id="openSettingsTop" title="Customize Layout"><svg><use href="#i-layout"/></svg></button>
       </div>
     </header>
@@ -117,9 +122,27 @@
       <div class="status-right"><span id="cursorPosition">Ln 1, Col 1</span><span>Spaces: 2</span><span>UTF-8</span><span id="languageStatus">TypeScript React</span><button id="statusTheme" title="Change Color Theme"><svg><use href="#i-palette"/></svg></button><button id="statusBell" title="Notifications"><svg><use href="#i-bell"/></svg></button></div>
     </footer>
   </div>
-  <div class="overlay hidden" id="paletteOverlay" role="presentation"><div class="quick-pick" role="dialog" aria-modal="true" aria-label="Quick Open"><div class="quick-input-wrap"><svg><use href="#i-search"/></svg><input id="paletteInput" type="text" autocomplete="off" aria-label="Search files and commands" placeholder="Search files by name (append : to go to line)" /><span class="quick-key">esc</span></div><div class="quick-results" id="paletteResults"></div><div class="quick-footer"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> to select</span><span><kbd>esc</kbd> to dismiss</span></div></div></div>
-  <div class="overlay hidden" id="settingsOverlay" role="presentation"><div class="settings-modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><div class="modal-header"><div><div class="modal-eyebrow">PERSONALIZE</div><h2 id="settingsTitle">Customize appearance</h2><p>Fine tune your VS Code-inspired workbench.</p></div><button class="icon-btn" id="closeSettings" title="Close Settings"><svg><use href="#i-x"/></svg></button></div><div class="settings-section"><label>Color theme</label><div class="theme-options"><button class="theme-option" data-theme-option="light"><span class="theme-preview light-preview"><i></i><b></b></span><strong>Light 2026</strong><small>Bright, focused</small><svg class="option-check"><use href="#i-check"/></svg></button><button class="theme-option" data-theme-option="dark"><span class="theme-preview dark-preview"><i></i><b></b></span><strong>Dark 2026</strong><small>Calm, refined</small><svg class="option-check"><use href="#i-check"/></svg></button></div></div><div class="settings-section"><label for="fontSizeRange">Editor font size <span id="fontSizeValue">13 px</span></label><input type="range" id="fontSizeRange" min="11" max="18" value="13" /><div class="setting-row"><div><strong>Compact layout</strong><small>Reduce spacing throughout the workbench</small></div><button class="toggle" id="densityToggle" role="switch" aria-checked="false" aria-label="Compact layout"><span></span></button></div><div class="setting-row"><div><strong>Editor minimap</strong><small>Show a compact overview of your file</small></div><button class="toggle checked" id="minimapToggle" role="switch" aria-checked="true" aria-label="Editor minimap"><span></span></button></div></div><div class="modal-footer"><span>Inspired by microsoft/vscode · MIT</span><button id="doneSettings">Done</button></div></div></div>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="glass-popover-panel glass-surface glass-enter" data-glass-variant="menu" id="glassDemoMenu" role="menu" aria-label="Frosted glass examples" hidden>
+    <div class="glass-menu-title">FROSTED GLASS OVERLAYS</div>
+    <button type="button" role="menuitem" data-glass-action="command"><svg><use href="#i-command"/></svg>Command Palette</button>
+    <button type="button" role="menuitem" data-glass-action="files"><svg><use href="#i-search"/></svg>Quick Open</button>
+    <button type="button" role="menuitem" data-glass-action="appearance"><svg><use href="#i-settings"/></svg>Appearance &amp; Glass Controls</button>
+    <button type="button" role="menuitem" data-glass-action="toggle"><svg><use href="#i-palette"/></svg>Toggle Frosted Glass</button>
+  </div>
+  <div class="overlay hidden" id="paletteOverlay" role="presentation"><div class="quick-pick glass-surface glass-enter" data-glass-variant="command" role="dialog" aria-modal="true" aria-label="Quick Open"><div class="quick-input-wrap"><svg><use href="#i-search"/></svg><input id="paletteInput" type="text" autocomplete="off" aria-label="Search files and commands" placeholder="Search files by name (append : to go to line)" /><span class="quick-key">esc</span></div><div class="quick-results" id="paletteResults"></div><div class="quick-footer"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> to select</span><span><kbd>esc</kbd> to dismiss</span></div></div></div>
+  <div class="overlay hidden" id="settingsOverlay" role="presentation"><div class="settings-modal glass-surface glass-enter" data-glass-variant="dialog" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><div class="modal-header"><div><div class="modal-eyebrow">PERSONALIZE</div><h2 id="settingsTitle">Customize appearance</h2><p>Fine tune your VS Code-inspired workbench.</p></div><button class="icon-btn" id="closeSettings" title="Close Settings"><svg><use href="#i-x"/></svg></button></div><div class="settings-section"><label>Color theme</label><div class="theme-options"><button class="theme-option" data-theme-option="light"><span class="theme-preview light-preview"><i></i><b></b></span><strong>Light 2026</strong><small>Bright, focused</small><svg class="option-check"><use href="#i-check"/></svg></button><button class="theme-option" data-theme-option="dark"><span class="theme-preview dark-preview"><i></i><b></b></span><strong>Dark 2026</strong><small>Calm, refined</small><svg class="option-check"><use href="#i-check"/></svg></button></div></div><div class="settings-section"><label for="fontSizeRange">Editor font size <span id="fontSizeValue">13 px</span></label><input type="range" id="fontSizeRange" min="11" max="18" value="13" /><div class="setting-row"><div><strong>Compact layout</strong><small>Reduce spacing throughout the workbench</small></div><button class="toggle" id="densityToggle" role="switch" aria-checked="false" aria-label="Compact layout"><span></span></button></div><div class="setting-row"><div><strong>Editor minimap</strong><small>Show a compact overview of your file</small></div><button class="toggle checked" id="minimapToggle" role="switch" aria-checked="true" aria-label="Editor minimap"><span></span></button></div></div><div class="settings-section glass-settings">
+    <div class="glass-settings-title"><div><strong>Frosted Glass Overlays</strong><small>Only floating UI is blurred; editor and sidebars stay solid.</small></div><button class="toggle checked" id="glassToggle" role="switch" aria-checked="true" aria-label="Enable frosted glass" type="button"><span></span></button></div>
+    <label class="glass-control" for="glassBlur">Backdrop blur <output id="glassBlurValue" for="glassBlur">12 px</output></label>
+    <input id="glassBlur" aria-label="Backdrop blur" type="range" min="0" max="24" step="1" value="12" />
+    <label class="glass-control" for="glassOpacity">Background opacity <output id="glassOpacityValue" for="glassOpacity">80%</output></label>
+    <input id="glassOpacity" aria-label="Background opacity" type="range" min="50" max="100" step="1" value="80" />
+    <div class="glass-preview"><div class="glass-surface glass-preview-card" data-glass-variant="popover"><strong>Live material preview</strong><span>Adjust blur and opacity to see the backdrop through this surface.</span></div></div>
+    <p class="glass-capability" id="glassCapability" role="status">Checking browser support…</p>
+  </div>
+  <div class="modal-footer"><span>Inspired by microsoft/vscode · MIT</span><button id="doneSettings">Done</button></div></div></div>
+  <div class="toast glass-surface" data-glass-variant="notification" id="toast" role="status" aria-live="polite"></div>
+  <script src="src/glass/components.js" defer></script>
+  <script src="src/glass/controller.js" defer></script>
   <script src="src/app.js" defer></script>
 </body>
 </html>

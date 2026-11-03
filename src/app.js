@@ -498,11 +498,12 @@
     {name:'Terminal: Clear',detail:'Terminal',run:() => { $('#terminalHistory').innerHTML = ''; togglePanel(true); }}
   ];
   let paletteSearch = '';
+  const glassPalette = new window.FrostedGlassUI.GlassCommandPalette($('#paletteOverlay'), { input: $('#paletteInput') });
 
-  const closePalette = () => { $('#paletteOverlay').classList.add('hidden'); };
+  const closePalette = () => { glassPalette.hide(); };
   const openPalette = (commandMode = false) => {
     $('#settingsOverlay').classList.add('hidden');
-    $('#paletteOverlay').classList.remove('hidden');
+    glassPalette.show();
     $('#paletteInput').value = commandMode ? '>' : '';
     paletteSearch = $('#paletteInput').value;
     state.paletteIndex = 0;

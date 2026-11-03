@@ -25,9 +25,12 @@ jobs:
         with:
           node-version: '22'
       - name: Check JavaScript syntax
-        run: node --check src/app.js
+        run: |
+          node --check src/app.js
+          node --check src/glass/components.js
+          node --check src/glass/controller.js
       - name: Run project tests
-        run: node --test tests/workbench.test.mjs
+        run: node --test tests/*.test.mjs
 
   deploy:
     name: Publish GitHub Pages
@@ -51,6 +54,7 @@ jobs:
           mkdir -p _site/src
           cp index.html favicon.svg _site/
           cp src/app.js src/styles.css _site/src/
+          cp -R src/glass _site/src/glass
       - name: Upload static site
         uses: actions/upload-pages-artifact@v4
         with:
