@@ -68,11 +68,13 @@ const processChrome = spawn(chrome, [
   '--headless=new', '--no-sandbox', '--disable-dev-shm-usage',
   '--remote-allow-origins=*', '--remote-debugging-port=' + debugPort,
   '--user-data-dir=' + profile, 'about:blank'
-], {stdio: 'ignore'});
+], {stdio: ['ignore','ignore','pipe']});
+let chromeDiagnostics = '';
+processChrome.stderr.on('data', chunk => { chromeDiagnostics = (chromeDiagnostics + chunk.toString()).slice(-6000); });
 let client;
 try {
   let endpoint = null;
-  for (let attempt=0; attempt<100; attempt++) {
+  for (let attempt=0; attempt<300; attempt++) {
     if (processChrome.exitCode !== null) throw new Error('Chrome exited before DevTools became ready');
     try {
       const tabs = await (await fetch('http://127.0.0.1:' + debugPort + '/json/list')).json();
@@ -81,7 +83,7 @@ try {
     } catch { /* not ready */ }
     await sleep(100);
   }
-  if (!endpoint) throw new Error('Chrome DevTools connection did not start');
+  if (!endpoint) throw new Error('Chrome DevTools connection did not start: ' + chromeDiagnostics);
   const ws = new WebSocket(endpoint);
   await new Promise((resolve,reject) => { ws.onopen = resolve; ws.onerror = reject; });
   client = new CDP(ws);
