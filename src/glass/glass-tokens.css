@@ -1,0 +1,64 @@
+/* VS Code 2026-inspired material tokens. Original values from official 2026 themes.
+   Project demo starts at 80%; official VS Code currently uses a 92% default. */
+:root {
+  --glass-blur: 12px;
+  --glass-opacity: 80%;
+  --glass-radius: 10px;
+  --glass-ease: cubic-bezier(.22, 1, .36, 1);
+  --glass-command: #202122;
+  --glass-menu: #202122;
+  --glass-popover: #202122;
+  --glass-dialog: #202122;
+  --glass-tooltip: #202122;
+  --glass-notification: #191a1b;
+  --glass-border: #2a2b2c;
+  --glass-text: #bfbfbf;
+  --glass-muted: #8c8c8c;
+  --glass-shadow: 0 14px 50px #0006, 0 2px 9px #0003;
+  --glass-focus: #3994bcb3;
+  --glass-hover: #ffffff14;
+}
+body[data-theme="dark"], [data-glass-theme="dark"] {
+  --glass-command: #202122;
+  --glass-menu: #202122;
+  --glass-popover: #202122;
+  --glass-dialog: #202122;
+  --glass-tooltip: #202122;
+  --glass-notification: #191a1b;
+  --glass-border: #2a2b2c;
+  --glass-text: #bfbfbf;
+  --glass-muted: #8c8c8c;
+  --glass-shadow: 0 14px 50px #0006, 0 2px 9px #0003;
+  --glass-focus: #3994bcb3;
+  --glass-hover: #ffffff14;
+}
+body[data-theme="light"], [data-glass-theme="light"] {
+  --glass-command: #fafafd;
+  --glass-menu: #fafafd;
+  --glass-popover: #fafafd;
+  --glass-dialog: #fafafd;
+  --glass-tooltip: #fafafd;
+  --glass-notification: #fafafd;
+  --glass-border: #e4e5e6;
+  --glass-text: #202020;
+  --glass-muted: #606060;
+  --glass-shadow: 0 16px 46px #18212b1f, 0 2px 8px #18212b12;
+  --glass-focus: #0069cc;
+  --glass-hover: #0000000d;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --glass-command: #fafafd;
+    --glass-menu: #fafafd;
+    --glass-popover: #fafafd;
+    --glass-dialog: #fafafd;
+    --glass-tooltip: #fafafd;
+    --glass-notification: #fafafd;
+    --glass-border: #e4e5e6;
+    --glass-text: #202020;
+    --glass-muted: #606060;
+    --glass-shadow: 0 16px 46px #18212b1f, 0 2px 8px #18212b12;
+    --glass-focus: #0069cc;
+    --glass-hover: #0000000d;
+  }
+}

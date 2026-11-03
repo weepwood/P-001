@@ -1,0 +1,46 @@
+/* Progressive enhancement: opaque, legible surfaces are the baseline.
+   Only the paint pseudo-element is blurred: foreground content stays crisp. */
+.glass-surface {
+  --glass-background: var(--glass-popover, #202122);
+  position: relative;
+  isolation: isolate;
+  border: 1px solid var(--glass-border, #2a2b2c);
+  border-radius: var(--glass-radius, 10px);
+  box-shadow: var(--glass-shadow, 0 12px 38px #0005);
+  background: var(--glass-background);
+  color: var(--glass-text, inherit);
+}
+.glass-surface[data-glass-disabled="true"] { background: var(--glass-background) !important; }
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) and (background-color: color-mix(in srgb, black 80%, transparent)) {
+  @media (forced-colors: none) {
+    [data-glass="enabled"] .glass-surface:not([data-glass-disabled="true"]) {
+      background: transparent;
+    }
+    [data-glass="enabled"] .glass-surface:not([data-glass-disabled="true"])::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: inherit;
+      pointer-events: none;
+      background-color: color-mix(in srgb, var(--glass-background) var(--glass-opacity, 80%), transparent);
+      -webkit-backdrop-filter: blur(var(--glass-blur, 12px));
+      backdrop-filter: blur(var(--glass-blur, 12px));
+    }
+  }
+}
+@media (prefers-reduced-transparency: reduce), (forced-colors: active) {
+  .glass-surface, [data-glass="enabled"] .glass-surface {
+    background: var(--glass-background) !important;
+    box-shadow: none;
+  }
+  .glass-surface::before, [data-glass="enabled"] .glass-surface::before {
+    content: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+@media (forced-colors: active) {
+  .glass-surface { background: Canvas !important; color: CanvasText !important; border-color: ButtonBorder !important; }
+  .glass-surface :focus-visible { outline: 2px solid Highlight !important; outline-offset: 2px; }
+}
